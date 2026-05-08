@@ -1,5 +1,5 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { McpFrontendStateService } from '../../../services/mcp/mcp-frontend-state.service';
@@ -12,6 +12,11 @@ import { McpFrontendStateService } from '../../../services/mcp/mcp-frontend-stat
   imports: [RouterLink, NgIf, AsyncPipe]
 })
 export class HeaderComponent {
+  // Input properties to support dynamic content for the AI Analysis page header
+  @Input() pageTitle: string | null = null;
+  @Input() backButtonLink: string | null = null;
+  @Input() backButtonText: string = 'Back to Issue';
+
   constructor(
     private router: Router,
     public authService: AuthService,
